@@ -12,8 +12,6 @@ end)
 
 RegisterCommand("density", function(source, args, rawCommand)
     TriggerEvent('chat:addSuggestion', '/density', '0.0 = none; 1.0 = max', {
-        { name="0.0", help="none" },
-        { name="1.0", help="max" }
     })
     dens = args[1]
     TriggerEvent('chat:addMessage', {
