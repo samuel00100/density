@@ -1,7 +1,21 @@
 dens = 0.5
 zero = true
 
-
+RegisterCommand("density", function(source, args, rawCommand)
+    TriggerEvent('chat:addSuggestion', '/density', '0.0 = none; 1.0 = max', {
+        { name="0.0 - 1.0", help="none - max" }
+    })
+    dens = args[1]
+    if args[1] == 0.0 then
+        zero = false
+    end
+    TriggerEvent('chat:addMessage', {
+        color = { 255, 0, 0},
+        multiline = true,
+        args = {"Density: ", dens}
+      })
+      
+end)    
 
 Citizen.CreateThread (function()
     while true do
@@ -16,26 +30,5 @@ Citizen.CreateThread (function()
 		SetCreateRandomCopsOnScenarios(zero)
 		SetGarbageTrucks(zero)
 		SetRandomBoats(zero)
-        if zero == false then
-            local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
-                    ClearAreaOfVehicles(x, y, z, 1000, false, false, false, false, false)
-                    RemoveVehiclesFromGeneratorsInArea(x - 500.0, y - 500.0, z - 500.0, x + 500.0, y + 500.0, z + 500.0);
-        end
     end
 end)
-
-RegisterCommand("density", function(source, args, rawCommand)
-    TriggerEvent('chat:addSuggestion', '/density', '0.0 = none; 1.0 = max', {
-        { name="0.0 - 1.0", help="none - max" }
-    })
-    dens = args[1]
-    if dens == 0.0 then
-        zero = false
-    end
-    TriggerEvent('chat:addMessage', {
-        color = { 255, 0, 0},
-        multiline = true,
-        args = {"Density: ", dens}
-      })
-      
-end)    
