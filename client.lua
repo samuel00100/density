@@ -16,6 +16,11 @@ Citizen.CreateThread (function()
 		SetCreateRandomCopsOnScenarios(zero)
 		SetGarbageTrucks(zero)
 		SetRandomBoats(zero)
+        if zero == false then
+            local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
+                    ClearAreaOfVehicles(x, y, z, 1000, false, false, false, false, false)
+                    RemoveVehiclesFromGeneratorsInArea(x - 500.0, y - 500.0, z - 500.0, x + 500.0, y + 500.0, z + 500.0);
+        end
     end
 end)
 
@@ -34,9 +39,3 @@ RegisterCommand("density", function(source, args, rawCommand)
       })
       
 end)    
-
-while zero == false do
-    local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
-            ClearAreaOfVehicles(x, y, z, 1000, false, false, false, false, false)
-            RemoveVehiclesFromGeneratorsInArea(x - 500.0, y - 500.0, z - 500.0, x + 500.0, y + 500.0, z + 500.0);
-end
