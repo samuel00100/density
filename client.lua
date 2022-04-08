@@ -1,9 +1,7 @@
 dens = 0.5
 zero = true
 
-if dens == 0.0 then
-    zero = false
-end
+
 
 Citizen.CreateThread (function()
     while true do
@@ -26,6 +24,9 @@ RegisterCommand("density", function(source, args, rawCommand)
         { name="0.0 - 1.0", help="none - max" }
     })
     dens = args[1]
+    if dens == 0.0 then
+        zero = false
+    end
     TriggerEvent('chat:addMessage', {
         color = { 255, 0, 0},
         multiline = true,
