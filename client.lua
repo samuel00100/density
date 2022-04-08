@@ -1,5 +1,7 @@
-dens = 0.5
-zero = true
+local dens = 0.0
+local zero = true
+local playerPed = GetPlayerPed(-1)
+local playerLocalisation = GetEntityCoords(playerPed)
 
 RegisterCommand("density", function(source, args, rawCommand)
     TriggerEvent('chat:addSuggestion', '/density', '0.0 = none; 1.0 = max', {
@@ -26,9 +28,10 @@ Citizen.CreateThread (function()
         SetPedDensityMultiplierThisFrame(dens)
         SetScenarioPedDensityMultiplierThisFrame(dens)
         SetCreateRandomCops(zero)
-	SetCreateRandomCopsNotOnScenarios(zero)
-	SetCreateRandomCopsOnScenarios(zero)
-	SetGarbageTrucks(zero)
-	SetRandomBoats(zero)
+		SetCreateRandomCopsNotOnScenarios(zero)
+		SetCreateRandomCopsOnScenarios(zero)
+		SetGarbageTrucks(zero)
+		SetRandomBoats(zero)
+        ClearArea(playerLocalisation.x, playerLocalisation.y, playerLocalisation.z, 1000.0, true, false, false, false)
     end
 end)
