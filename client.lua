@@ -1,4 +1,4 @@
-local dens = 0.5
+local dens = 0.0
 local zero = true
 local playerPed = GetPlayerPed(-1)
 local playerLocalisation = GetEntityCoords(playerPed)
