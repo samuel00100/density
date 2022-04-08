@@ -32,6 +32,8 @@ Citizen.CreateThread (function()
 	SetCreateRandomCopsOnScenarios(zero)
 	SetGarbageTrucks(zero)
 	SetRandomBoats(zero)
-        ClearArea(playerLocalisation.x, playerLocalisation.y, playerLocalisation.z, 1000.0, true, false, false, false)
+	if dens == 0.0 then
+        	ClearArea(playerLocalisation.x, playerLocalisation.y, playerLocalisation.z, 1000.0, true, false, false, false)
+	end
     end
 end)
